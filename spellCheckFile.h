@@ -21,6 +21,7 @@ string cleaner(string word)
 		else if ((int)word[i] >= 65 && (int)word[i] < 91)
 			word[i] = (int)word[i] + 32;	//changes to lowercase			
 		else  //when not a letter at all
+		{
 			if (i == 0) //weird boundary condition for first char
 			{
 				word.erase(i, i + 1); 
@@ -28,6 +29,7 @@ string cleaner(string word)
 			}
 			else
 				word.erase(i, i);
+		}
 	}
 	return word;
 }
