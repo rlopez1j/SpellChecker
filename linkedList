@@ -1,0 +1,61 @@
+#include <iostream>	
+using namespace std;
+
+class linkedList
+{
+private:
+	class node
+	{
+	public:
+		string data;
+		node * next;
+
+		node(string x)
+		{
+			next = NULL;
+			data = x;
+		}
+	};
+
+	node * head, * tail;
+	int numNodes;
+
+	bool contains_h(string x, node * p)
+	{
+		if (p == NULL)
+			return false;
+		else if (x == p->data)
+			return true;
+		else
+			return contains_h(x, p->next);
+	}
+
+public:
+	linkedList()
+	{
+		head = NULL;
+		tail = head;
+		numNodes = 0;
+	}
+
+	void enqueue(string x)
+	{
+		node * bby = new node(x);
+		if (head == NULL)
+		{
+			head = bby;
+			tail = head;
+			numNodes = 1;
+		}
+		else
+		{
+			tail->next = bby;
+			tail = bby;
+			numNodes++;
+		}
+	}
+
+	int size() { return numNodes; }
+
+	bool contains(string word) { return contains_h(word, head); }
+};
