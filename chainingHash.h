@@ -57,10 +57,10 @@ public:
 	double averageSearchCost()
 	{
 		double sumSquares=0;
+		
 		for(int i=0; i<capacity; i++)
-		{
 			sumSquares += (table[i].size()*table[i].size());
-		}
+			
 		return sumSquares/numItems;
 	}
 
